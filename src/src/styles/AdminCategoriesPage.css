@@ -1,0 +1,71 @@
+.admin-category-page{
+  padding:30px;
+  background:#f1f3f6;
+  min-height:100vh;
+  font-family:Arial;
+}
+
+.admin-category-page h2{
+  margin-bottom:20px;
+}
+
+.category-add{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.category-add input{
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:4px;
+}
+
+.category-add button{
+  padding:10px 15px;
+  background:#2874f0;
+  border:none;
+  color:white;
+  border-radius:4px;
+  cursor:pointer;
+}
+
+table{
+  width:100%;
+  background:white;
+  border-collapse:collapse;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+th,td{
+  padding:12px;
+  border-bottom:1px solid #eee;
+}
+
+th{
+  background:#2874f0;
+  color:white;
+}
+
+.delete-btn{
+  background:red;
+  color:white;
+  border:none;
+  padding:6px 12px;
+  border-radius:4px;
+  cursor:pointer;
+}
+
+.admin-nav{
+  margin-bottom:20px;
+}
+
+.admin-nav button{
+  padding:8px 15px;
+  margin-right:10px;
+  border:none;
+  background:#2874f0;
+  color:white;
+  border-radius:4px;
+  cursor:pointer;
+}

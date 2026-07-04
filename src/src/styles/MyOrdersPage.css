@@ -1,0 +1,78 @@
+.orders-page{
+  padding:30px;
+  background:#f1f3f6;
+  min-height:100vh;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.orders-page h2{
+  margin-bottom:25px;
+}
+
+/* order box */
+
+.order-box{
+  background:white;
+  border-radius:8px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* header */
+
+.order-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* items */
+
+.order-items{
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+  padding:10px 0;
+}
+
+.order-item{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  font-size:14px;
+}
+
+/* total */
+
+.order-total{
+  margin-top:10px;
+  font-weight:bold;
+  text-align:right;
+}
+
+/* status badges */
+
+.status{
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.status.delivered{
+  background:#d4edda;
+  color:#155724;
+}
+
+.status.shipped{
+  background:#d1ecf1;
+  color:#0c5460;
+}
+
+.status.pending{
+  background:#fff3cd;
+  color:#856404;
+}

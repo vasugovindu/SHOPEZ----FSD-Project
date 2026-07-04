@@ -1,0 +1,82 @@
+.admin-navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 40px;
+
+  /* Gradient primary color */
+  background:linear-gradient(135deg,#1a237e,#283593);
+
+  color:white;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Logo */
+
+.admin-logo{
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:#ffffff;
+}
+
+/* Links container */
+
+.admin-links{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+/* Navigation links */
+
+.admin-links a{
+  text-decoration:none;
+  color:#e3e6ff;
+  font-weight:500;
+  font-size:15px;
+  transition:all 0.3s ease;
+  position:relative;
+}
+
+/* underline hover animation */
+
+.admin-links a::after{
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  bottom:-4px;
+  left:0;
+  background:#ffeb3b;
+  transition:0.3s;
+}
+
+.admin-links a:hover{
+  color:#ffeb3b;
+}
+
+.admin-links a:hover::after{
+  width:100%;
+}
+
+/* Logout button */
+
+.admin-links button{
+  padding:8px 16px;
+  border:none;
+  background:linear-gradient(135deg,#ff5252,#d32f2f);
+  color:white;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:500;
+  transition:all 0.3s ease;
+}
+
+/* Button hover */
+
+.admin-links button:hover{
+  background:linear-gradient(135deg,#ff1744,#b71c1c);
+  transform:translateY(-2px);
+  box-shadow:0 4px 8px rgba(0,0,0,0.2);
+}
