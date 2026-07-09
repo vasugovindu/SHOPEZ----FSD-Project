@@ -1,0 +1,45 @@
+backend/
+│── config/
+│   └── db.js
+│
+│── controllers/
+│   ├── authController.js
+│   ├── userController.js
+│   ├── productController.js
+│   ├── cartController.js
+│   ├── orderController.js
+│   └── paymentController.js
+│
+│── middleware/
+│   ├── authMiddleware.js
+│   ├── errorMiddleware.js
+│   └── uploadMiddleware.js
+│
+│── models/
+│   ├── User.js
+│   ├── Product.js
+│   ├── Category.js
+│   ├── Cart.js
+│   ├── Order.js
+│   └── Payment.js
+│
+│── routes/
+│   ├── authRoutes.js
+│   ├── userRoutes.js
+│   ├── productRoutes.js
+│   ├── cartRoutes.js
+│   ├── orderRoutes.js
+│   └── paymentRoutes.js
+│
+│── services/
+│   ├── emailService.js
+│   └── paymentService.js
+│
+│── uploads/
+│── utils/
+│   ├── generateToken.js
+│   └── apiFeatures.js
+│
+│── .env
+│── server.js
+└── package.json
