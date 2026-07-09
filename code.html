@@ -1,0 +1,267 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SHOPEZ - Create Schema and models</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#eff4ff",
+                        "on-surface": "#0b1c30",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-surface-variant": "#434655",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary": "#004ac6",
+                        "secondary": "#9d4300",
+                        "primary-container": "#2563eb",
+                        "secondary-container": "#fd761a",
+                        "on-secondary-fixed": "#341100",
+                        "tertiary": "#4d556b",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-variant": "#d3e4fe",
+                        "surface-tint": "#0053db",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#656d84",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed": "#00174b",
+                        "background": "#f8f9ff",
+                        "on-primary-container": "#eeefff",
+                        "outline-variant": "#c3c6d7",
+                        "surface-bright": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dbe1ff",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb690",
+                        "surface-container": "#e5eeff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "on-tertiary-container": "#eef0ff",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed": "#ffdbca",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#131b2e",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary-container": "#5c2400",
+                        "outline": "#737686",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#dae2fd",
+                        "on-secondary-fixed-variant": "#783200",
+                        "inverse-primary": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "64px",
+                        "margin": "32px",
+                        "xs": "8px",
+                        "md": "24px",
+                        "lg": "40px",
+                        "gutter": "24px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "code-snippet": ["JetBrains Mono"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-base": ["Inter"],
+                        "headline-md-mobile": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "code-snippet": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-base": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .code-container {
+            background-color: #0d1117;
+            scrollbar-width: thin;
+            scrollbar-color: #30363d transparent;
+        }
+        .code-container::-webkit-scrollbar {
+            height: 4px;
+        }
+        .code-container::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 2px;
+        }
+        .line-numbers {
+            color: #484f58;
+            user-select: none;
+            padding-right: 12px;
+            border-right: 1px solid #21262d;
+            margin-right: 12px;
+            text-align: right;
+            min-width: 24px;
+        }
+        .syntax-keyword { color: #ff7b72; }
+        .syntax-const { color: #79c0ff; }
+        .syntax-type { color: #ffa657; }
+        .syntax-string { color: #a5d6ff; }
+        .syntax-comment { color: #8b949e; }
+        .syntax-property { color: #d2a8ff; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base antialiased min-h-screen flex flex-col pb-20">
+<!-- Top Navigation Bar -->
+<header class="bg-surface sticky top-0 z-40 border-b border-outline-variant flex justify-between items-center w-full px-sm py-xs">
+<div class="flex items-center gap-xs">
+<button class="p-xs text-primary transition-colors duration-200 hover:bg-surface-container-low">
+
+</button>
+
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+
+</div>
+</header>
+<main class="flex-1 w-full max-w-3xl mx-auto px-sm md:px-margin pt-sm">
+<!-- Breadcrumbs -->
+
+<!-- Task Header Section -->
+<section class="mb-lg">
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-start gap-sm">
+<h2 class="font-headline-md-mobile text-headline-md-mobile text-on-surface leading-tight">Create Schema and models</h2>
+
+</div>
+
+
+</div>
+</section>
+<!-- Description Section -->
+<section class="mb-xl">
+<h3 class="font-headline-md-mobile text-headline-md-mobile text-on-surface mb-sm">Description</h3>
+
+<!-- Code Blocks Container -->
+<div class="space-y-sm">
+<!-- Code Block: All Schemas -->
+<div class="code-container rounded-xl overflow-hidden shadow-sm border border-[#30363d]">
+<div class="flex justify-between items-center px-sm py-xs bg-[#161b22] border-b border-[#30363d]">
+<span class="font-label-mono text-label-mono text-[#8b949e]">Schema.js</span>
+<button class="p-xs text-[#8b949e] hover:text-white transition-colors" onclick="copyCode(this)">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+<div class="p-sm overflow-x-auto font-code-snippet text-code-snippet leading-relaxed">
+<pre class="flex"><code class="flex-1 text-[#e6edf3]"><span class="line-numbers">1</span><span class="syntax-keyword">import</span> mongoose <span class="syntax-keyword">from</span> <span class="syntax-string">"mongoose"</span>;
+<span class="line-numbers">2</span>
+<span class="line-numbers">3</span><span class="syntax-const">const</span> <span class="syntax-property">userSchema</span> = <span class="syntax-keyword">new</span> mongoose.Schema({
+<span class="line-numbers">4</span>  username: {type: String},
+<span class="line-numbers">5</span>  password: {type: String},
+<span class="line-numbers">6</span>  email: {type: String},
+<span class="line-numbers">7</span>  usertype: {type: String}
+<span class="line-numbers">8</span>});
+<span class="line-numbers">9</span>
+<span class="line-numbers">10</span><span class="syntax-const">const</span> <span class="syntax-property">adminSchema</span> = <span class="syntax-keyword">new</span> mongoose.Schema({
+<span class="line-numbers">11</span>  banner: {type: String},
+<span class="line-numbers">12</span>  categories: {type: Array}
+<span class="line-numbers">13</span>});
+<span class="line-numbers">14</span>
+<span class="line-numbers">15</span><span class="syntax-const">const</span> <span class="syntax-property">productSchema</span> = <span class="syntax-keyword">new</span> mongoose.Schema({
+<span class="line-numbers">16</span>  title: {type: String},
+<span class="line-numbers">17</span>  description: {type: String},
+<span class="line-numbers">18</span>  mainImg: {type: String},
+<span class="line-numbers">19</span>  size: {type: String},
+<span class="line-numbers">20</span>  quantity: {type: Number},
+<span class="line-numbers">21</span>  price: {type: Number},
+<span class="line-numbers">22</span>  discount: {type: Number},
+<span class="line-numbers">23</span>  category: {type: String},
+<span class="line-numbers">24</span>  gender: {type: String}
+<span class="line-numbers">25</span>});
+<span class="line-numbers">26</span>
+<span class="line-numbers">27</span><span class="syntax-const">const</span> <span class="syntax-property">orderSchema</span> = <span class="syntax-keyword">new</span> mongoose.Schema({
+<span class="line-numbers">28</span>  userId: {type: String},
+<span class="line-numbers">29</span>  name: {type: String},
+<span class="line-numbers">30</span>  email: {type: String},
+<span class="line-numbers">31</span>  mobile: {type: String},
+<span class="line-numbers">32</span>  address: {type: String},
+<span class="line-numbers">33</span>  pincode: {type: String},
+<span class="line-numbers">34</span>  title: {type: String},
+<span class="line-numbers">35</span>  description: {type: String},
+<span class="line-numbers">36</span>  mainImg: {type: String},
+<span class="line-numbers">37</span>  size: {type: String},
+<span class="line-numbers">38</span>  quantity: {type: Number},
+<span class="line-numbers">39</span>  price: {type: Number},
+<span class="line-numbers">40</span>  discount: {type: Number},
+<span class="line-numbers">41</span>  paymentMethod: {type: String},
+<span class="line-numbers">42</span>  orderDate: {type: String},
+<span class="line-numbers">43</span>  deliveryDate: {type: String},
+<span class="line-numbers">44</span>  orderStatus: {type: String, default: <span class="syntax-string">'order placed'</span>}
+<span class="line-numbers">45</span>});
+<span class="line-numbers">46</span>
+<span class="line-numbers">47</span><span class="syntax-const">const</span> <span class="syntax-property">cartSchema</span> = <span class="syntax-keyword">new</span> mongoose.Schema({
+<span class="line-numbers">48</span>  userId: {type: String},
+<span class="line-numbers">49</span>  title: {type: String},
+<span class="line-numbers">50</span>  description: {type: String},
+<span class="line-numbers">51</span>  mainImg: {type: String},
+<span class="line-numbers">52</span>  size: {type: String},
+<span class="line-numbers">53</span>  quantity: {type: Number},
+<span class="line-numbers">54</span>  price: {type: Number},
+<span class="line-numbers">55</span>  discount: {type: Number}
+<span class="line-numbers">56</span>});</code></pre>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile Primary Shell) -->
+
+<script>
+        function copyCode(button) {
+            const icon = button.querySelector('.material-symbols-outlined');
+            icon.innerText = 'check';
+            icon.classList.add('text-green-400');
+            
+            setTimeout(() => {
+                icon.innerText = 'content_copy';
+                icon.classList.remove('text-green-400');
+            }, 2000);
+        }
+
+        // Add a subtle scroll animation for breadcrumbs
+        const breadcrumbs = document.querySelector('nav[overflow-x-auto]');
+        if(breadcrumbs) {
+            breadcrumbs.addEventListener('wheel', (e) => {
+                if (e.deltaY !== 0) {
+                    e.preventDefault();
+                    breadcrumbs.scrollLeft += e.deltaY;
+                }
+            });
+        }
+    </script>
+
+
+</body></html>
