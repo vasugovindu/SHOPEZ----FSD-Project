@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopez E-Commerce - Database Connection</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; margin: 40px; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; margin-top: 20px; }
+        pre { background-color: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; font-family: 'Courier New', Courier, monospace; font-size: 14px; }
+        code { font-family: 'Courier New', Courier, monospace; }
+        .explanation { background-color: #f9f9f9; padding: 15px; border-left: 4px solid #2ecc71; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Shopez E-Commerce Application</h1>
+    <h2>Database Connection Setup</h2>
+    <p>This document provides the standard Mongoose database connection setup for the Shopez backend based on the required specifications. It ensures the application successfully connects to MongoDB before executing further logic.</p>
+
+    <h3>Connection Code (<code>config/db.js</code>)</h3>
+    <pre><code>const mongoose = require('mongoose');
+
+const connectDB = async () => {
+    try {
+        // Establish connection using the URI from environment variables
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log("MongoDB Connected successfully");
+    } catch (error) {
+        // Log the error and exit the process with failure
+        console.error(`Error: ${error.message}`);
+        process.exit(1);
+    }
+};
+
+module.exports = connectDB;
+</code></pre>
+
+    <div class="explanation">
+        <h3>Code Breakdown</h3>
+        <ul>
+            <li><strong><code>require('mongoose')</code>:</strong> Imports the Mongoose library, which acts as the Object Data Modeling (ODM) interface for MongoDB.</li>
+            <li><strong><code>connectDB</code> function:</strong> An asynchronous wrapper function that manages the connection attempt.</li>
+            <li><strong><code>process.env.MONGO_URI</code>:</strong> Securely fetches the connection string from your environment variables (usually defined in a <code>.env</code> file) rather than hardcoding credentials.</li>
+            <li><strong>Error Handling:</strong> The <code>try...catch</code> block ensures that if the connection fails, the error is logged to the console, and <code>process.exit(1)</code> shuts down the Node server (since an e-commerce app cannot function without its database).</li>
+        </ul>
+    </div>
+</body>
+</html>
